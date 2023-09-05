@@ -8,17 +8,45 @@ export class AppointmentService {
 
   constructor() { }
 
+  // appointments:Appointment[]=[ 
+  //   { id: "1", patient:  { id: 1, name: 'Opción 1',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
+  //   { id: "2", patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
+  //   { id: "4", patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
+  //   { id: "3", patient: { id: 3, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
+  // ]
   appointments:Appointment[]=[ 
-    { id: "1", patient:  { id: 1, name: 'Opción 1',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
-    { id: "2", patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '10:20 AM',comments:'cirugia'},
+    { id: "1", patient: "pepe", date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
+    { id: "2", patient: "pepe", date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
+    { id: "4", patient: "pepe", date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
+    { id: "3", patient: "pepe", date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
   ]
   
   patients: any[] = [
-    { id: 1, name: 'Opción 1',age:23,weigth:27,owner:"memo" },
-    { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" },
-    { id: 3, name: 'Opción 3',age:23,weigth:27,owner:"memo" },
-    // Agrega más datos según tus necesidades
+    { id: 1, name: 'Paco',age:23,weigth:27,owner:"memo" },
+    { id: 2, name: 'Manchas',age:23,weigth:27,owner:"memo" },
+    { id: 3, name: 'Oso',age:23,weigth:27,owner:"memo" },
   ];
+
+  hours:any[]=[
+    '08:00',
+    '08:30',
+    '09:00',
+    '09:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+    '14:00',
+    '14:30',
+    '15:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00'
+  ]
 
   getAll():Appointment[]{
     return this.appointments;

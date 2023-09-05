@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
 import { Appointment } from '../appointment.model';
 
@@ -16,8 +16,31 @@ export class ListAppointmentsComponent implements OnInit{
   }
 
   getAll(){
-    this.appointments=this.service.getAll();
+    this.appointments=this.service.getAll(); 
+    this.orderAppointments(this.appointments);
   }
 
+  orderAppointments(arr:any[]){
+    arr.sort((a,b)=>
+    {
+      if(a.date.getTime() !== b.date.getTime()){
+        return a.date.getTime()- b.date.getTime()
+        
+      }
+      else{      
+        const hourA=a.hour;
+        const hourB=b.hour;
+  
+        if(hourA<hourB){
+          return  -1;
+        }
+        if(hourB<hourA){
+          return 1;
+        }
+        return 0;        
+      
+      }
+    })
+  }
 
 }

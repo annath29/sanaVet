@@ -6,32 +6,40 @@
 
         <div class="form-group">
             <label for="patient">Paciente</label>
-            <!-- <select [(ngModel)]="optionSelect"  class="form-control">
+            <select [(ngModel)]="patientSelect"  formControlName="patient"class="form-control" placeholder="selecion">
                 <option value="1">Selecciona una opción</option>
-                <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name }}</option>
-            </select>  -->
+                <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+            </select> 
             <!-- <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control"> -->
-            <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control">
+            <!-- <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control"> -->
+            <span *ngIf="isValid('patient')" class="text-danger">Este campo es requerido</span>
+
         </div>
         <div class="form-group">
             <label for="date">Fecha</label>
-            <input type="text" formControlName="date" placeholder="Seleccione una fecha" class="form-control">
-        </div>
+            <input type="date" formControlName="date" placeholder="Seleccione una fecha" class="form-control">
+            <span *ngIf="isValid('date')" class="text-danger">Este campo es requerido</span>        </div>
+
         <div class="form-group">
             <label for="hour">Hora</label>
-            <input type="text" formControlName="hour" placeholder="Seleccione una hora" class="form-control">
+            <select [(ngModel)]="hourSelect" formControlName="hour" class="text-center form-control" placeholder="selecion">
+                <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+            </select>            
+            <!-- <input type="time" formControlName="hour" placeholder="Seleccione una hora" class="form-control"> -->
+            <span *ngIf="isValid('hour')" class="text-danger">Este campo es requerido</span>
         </div>
         <div class="form-group">
-            <label for="hour">Comentarios</label>
-            <input type="text" formControlName="hour" placeholder="Ingrese un comentario" class="form-control">
+            <label for="comments">Comentarios</label>
+            <input type="text" formControlName="comments" placeholder="Ingrese un comentario" class="form-control">
+            <span *ngIf="isValid('comments')" class="text-danger">Este campo es requerido</span>
+            <span *ngIf="myForm.controls['comments'].getError('pattern') && myForm.controls['comments'].touched " class="text-danger"> No se permite caracteres especiales</span>
         </div>
-
         <div class="row justify-content-center mb-5">
             <div class="col-6 d-flex justify-content-center">
-                <button type="submit" class="w-75 btn btn-outline-dark" >Guardar</button>
+                <button type="submit" class="w-75 btn btn-outline-dark"  (click)="save()" [disabled]="!myForm.valid">Guardar</button>
             </div>
             <div class="col-6 d-flex justify-content-center">
-                <button type="button" class="w-75 btn btn-outline-dark" >Cancelar</button>
+                <button type="button" class="w-75 btn btn-outline-dark" (click)="close.emit()" >Cancelar</button>
             </div>
         </div>
     </div>
