@@ -1,1 +1,40 @@
+<div class="container mt-5">
+    <div class="row justify-content-end mx-5">
+        <button type="button" class="btn btn-outline-dark text-center">
+            <h4>Agendar <em class="bi-calendar-plus-fill mx-1 iconSize"></em></h4>
+        </button>
+    </div>
+    <div class="row mt-3 mb-5 mx-5 justify-content-center">
+        <h1 class="text-center">Pacientes Agendados</h1>
+    </div>
 
+
+    <div class="row justify-content-center mx-5">
+        <table *ngIf="appointments.length" class="table mx-5 table-bordered">
+            <thead class="text-center">
+              <tr>
+                <th class="col-3 text-center color-text">Paciente</th>
+                <th class="col-2 text-center color-text">Fecha</th>
+                <th class="col-2 text-center color-text">Hora </th>
+                <th class="col-3 text-center color-text">Comentarios</th>
+                <th class="col-2 text-center color-text"></th>
+              </tr>
+            </thead>
+            <tbody class="mt-5">
+                <tr *ngFor="let appointment of appointments">
+                    <td class="col-3 text-center align-middle">{{appointment.patient}}</td>
+                    <td class="col-2 text-center align-middle">{{appointment.date | date:'EEEE, dd/MM/yy'}}</td>
+                    <td class="col-2 text-center align-middle">{{appointment.hour}}</td>
+                    <td class="col-3 text-center align-middle">{{appointment.comments}}</td>
+                    <td class="col-2 text-center align-middle">
+                        <em class="mx-1 bi bi-pen-fill"></em>
+                        <em class="mx-1 bi bi-trash-fill"></em>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="!appointments.length">
+            <h3 class="text-danger">No hay pacientes agendados</h3>
+          </div>
+    </div>
+</div>
