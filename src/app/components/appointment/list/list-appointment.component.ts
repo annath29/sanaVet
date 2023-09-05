@@ -18,4 +18,6 @@ export class ListAppointmentsComponent implements OnInit{
   getAll(){
     this.appointments=this.service.getAll();
   }
+
+
 }

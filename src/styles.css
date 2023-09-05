@@ -3,3 +3,12 @@
 .iconSize{
     font-size: x-large;
 }
+
+label{
+    font-size: medium;
+    font-weight: bolder;
+}
+
+p{
+    font-weight: bolder;
+}

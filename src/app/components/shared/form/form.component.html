@@ -1,0 +1,38 @@
+<form [formGroup]="myForm">
+    <div class="container mt-5 px-5 border border-dark">
+        <div class="my-5 text-center">
+            <h2>Agendar Nueva cita</h2>
+        </div>
+
+        <div class="form-group">
+            <label for="patient">Paciente</label>
+            <!-- <select [(ngModel)]="optionSelect"  class="form-control">
+                <option value="1">Selecciona una opción</option>
+                <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name }}</option>
+            </select>  -->
+            <!-- <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control"> -->
+            <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="date">Fecha</label>
+            <input type="text" formControlName="date" placeholder="Seleccione una fecha" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="hour">Hora</label>
+            <input type="text" formControlName="hour" placeholder="Seleccione una hora" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="hour">Comentarios</label>
+            <input type="text" formControlName="hour" placeholder="Ingrese un comentario" class="form-control">
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6 d-flex justify-content-center">
+                <button type="submit" class="w-75 btn btn-outline-dark" >Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button type="button" class="w-75 btn btn-outline-dark" >Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
