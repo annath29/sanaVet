@@ -7,8 +7,7 @@
         <div class="form-group">
             <label for="patient">Paciente</label>
             <select [(ngModel)]="patientSelect"  formControlName="patient"class="form-control" placeholder="selecion">
-                <option value="1">Selecciona una opción</option>
-                <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+                <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name }}</option>
             </select> 
             <!-- <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control"> -->
             <!-- <input  type="text" formControlName="patient" placeholder="Seleccione una paciente" class="form-control"> -->

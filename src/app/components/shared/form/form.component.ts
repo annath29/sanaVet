@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { patternComment } from './pattern-appointment';
 import { AppointmentService } from '../../appointment/appointment.service';
+import { Appointment } from '../../Interfaces/appointment.model';
+import { Patient } from '../../Interfaces/patientsmodel';
 
 @Component({
   selector: 'app-form',
@@ -13,9 +15,10 @@ export class FormComponent {
   @Output() close = new EventEmitter<{}>();
 
   constructor(private fb: FormBuilder,private service:AppointmentService){}
-   
-  patients:any[]=this.service.patients;
-  hours:any[]=this.service.hours;
+  appointment!:Appointment;
+  patients:Patient[]=this.service.patients;
+  id:number=this.service.id;
+  hours:string[]=this.service.hours;
   public patientSelect:any;
   public hourSelect:any;
   selectedDate: Date = new Date();
@@ -35,7 +38,23 @@ export class FormComponent {
 
   save()
   {
-    this.data.emit(this.myForm.value)
+    // this.data.emit({
+    //   patient:this.service.findPattientById(this.patientSelect)
+    // })
+
+    console.log(this.appointment)
+
+    this.appointment={
+      id:this.id +1,
+      patient:this.service.findPattientById(this.patientSelect),
+      date:this.myForm.controls['date'].value,
+      hour:this.myForm.controls['hour'].value,
+      comments:this.myForm.controls['comments'].value,
+    }
+    //this.appointment=this.myForm.value
+    this.service.saveAppointment(this.appointment)
+    console.log("despues del save",this.appointment)
+    //this.myForm.reset();
   }
 
 }

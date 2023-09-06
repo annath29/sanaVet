@@ -1,12 +1,17 @@
 import { RouterModule, Routes } from "@angular/router";
 import { ListAppointmentsComponent } from "./list/list-appointment.component";
-import { NgModule } from "@angular/core";
+import { NgModule} from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { CreateComponent } from "./create/create.component";
 
 const routes: Routes =[
     {
         path:'list',
         component:ListAppointmentsComponent,
+    },
+    {
+        path:'create',
+        component:CreateComponent,
     },
     {
         path:'**',
@@ -23,7 +28,8 @@ const routes: Routes =[
         RouterModule
     ],
     declarations:[
-        ListAppointmentsComponent
+        ListAppointmentsComponent,
+        CreateComponent
     ],
 })
 

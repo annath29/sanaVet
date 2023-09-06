@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Appointment } from './appointment.model';
+import { Appointment } from '../Interfaces/appointment.model';
+import { Patient } from '../Interfaces/patientsmodel';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,29 @@ export class AppointmentService {
 
   constructor() { }
 
+  appointments:Appointment[]=[]
+  id:number=this.appointments.length;
+
   // appointments:Appointment[]=[ 
-  //   { id: "1", patient:  { id: 1, name: 'Opción 1',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
-  //   { id: "2", patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
-  //   { id: "4", patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
-  //   { id: "3", patient: { id: 3, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
+  //   { id: 1, patient:  { id: 1, name: 'Opción 1',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
+  //   { id: 2, patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
+  //   { id: 4, patient: { id: 2, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
+  //   { id: 3, patient: { id: 3, name: 'Opción 2',age:23,weigth:27,owner:"memo" }, date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
   // ]
-  appointments:Appointment[]=[ 
-    { id: "1", patient: "pepe", date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
-    { id: "2", patient: "pepe", date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
-    { id: "4", patient: "pepe", date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
-    { id: "3", patient: "pepe", date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
-  ]
+  // appointments:Appointment[]=[ 
+  //   { id: "1", patient: "pepe", date: new Date('2023-09-3'), hour: '10:00 AM',comments:'patita' },    
+  //   { id: "2", patient: "pepe", date: new Date('2023-09-5'), hour: '08:20 AM',comments:'cirugia'},
+  //   { id: "4", patient: "pepe", date: new Date('2023-09-5'), hour: '10:00 AM',comments:'cirugia'},
+  //   { id: "3", patient: "pepe", date: new Date('2023-09-4'), hour: '10:20 AM',comments:'cirugia'},
+  // ]
   
-  patients: any[] = [
+  patients: Patient[] = [
     { id: 1, name: 'Paco',age:23,weigth:27,owner:"memo" },
     { id: 2, name: 'Manchas',age:23,weigth:27,owner:"memo" },
     { id: 3, name: 'Oso',age:23,weigth:27,owner:"memo" },
   ];
 
-  hours:any[]=[
+  hours:string[]=[
     '08:00',
     '08:30',
     '09:00',
@@ -53,6 +57,18 @@ export class AppointmentService {
   }
   // Agregar una nueva cita
   saveAppointment(appointment: Appointment): void {
+    console.log("en el servcio tengo ",appointment)
     this.appointments.push(appointment);
+    console.log("en el servcio tengo las appointments",this.appointments)
+  }
+
+  findPattientById(id:number):Patient{
+    
+    const patient =this.patients.find(item => item.id ==id);
+    if( patient== undefined){
+      throw new Error("el id no existe");
+    }
+
+    return patient;
   }
 }

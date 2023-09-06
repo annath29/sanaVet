@@ -21,7 +21,7 @@
             </thead>
             <tbody class="mt-5">
                 <tr *ngFor="let appointment of appointments">
-                    <td class="col-3 text-center align-middle">{{appointment.patient}}</td>
+                    <td class="col-3 text-center align-middle">{{appointment.patient.name}}</td>
                     <td class="col-2 text-center align-middle">{{appointment.date | date:'EEEE, dd/MM/yy'}}</td>
                     <td class="col-2 text-center align-middle">{{appointment.hour}}</td>
                     <td class="col-3 text-center align-middle">{{appointment.comments}}</td>
@@ -33,7 +33,7 @@
             </tbody>
         </table>
         <div *ngIf="!appointments.length">
-            <h3 class="text-danger">No hay pacientes agendados</h3>o
+            <h3 class="text-danger">No hay pacientes agendados</h3>
           </div>
     </div>
 </div>
