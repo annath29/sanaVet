@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { patternComment } from './pattern-appointment';
-import { AppointmentService } from '../../appointment/appointment.service';
-import { Appointment } from '../../Interfaces/appointment.model';
-import { Patient } from '../../Interfaces/patientsmodel';
+import { AppointmentService } from '../appointment.service';
+import { Appointment } from '../Interfaces/appointment.model';
+import { Patient } from '../Interfaces/patientsmodel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -14,13 +15,17 @@ export class FormComponent {
   @Output() data = new EventEmitter<any>();
   @Output() close = new EventEmitter<{}>();
 
-  constructor(private fb: FormBuilder,private service:AppointmentService){}
+  constructor(
+    private fb: FormBuilder,
+    private service:AppointmentService,
+    private router:Router,
+  ){}
   appointment!:Appointment;
   patients:Patient[]=this.service.patients;
   id:number=this.service.id;
   hours:string[]=this.service.hours;
-  public patientSelect:any;
-  public hourSelect:any;
+  patientSelect:any;
+  hourSelect:any;
   selectedDate: Date = new Date();
 
   public myForm: FormGroup = this.fb.group({
@@ -55,6 +60,7 @@ export class FormComponent {
     this.service.saveAppointment(this.appointment)
     console.log("despues del save",this.appointment)
     //this.myForm.reset();
+    this.router.navigateByUrl('/appointments/list');
   }
 
 }

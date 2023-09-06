@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Appointment } from '../Interfaces/appointment.model';
-import { Patient } from '../Interfaces/patientsmodel';
+import { Appointment } from './Interfaces/appointment.model';
+import { Patient } from './Interfaces/patientsmodel';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
 
-  constructor() { }
-
-  appointments:Appointment[]=[]
+  private appointments:Appointment[]=[]
   id:number=this.appointments.length;
 
   // appointments:Appointment[]=[ 
@@ -56,7 +55,7 @@ export class AppointmentService {
     return this.appointments;
   }
   // Agregar una nueva cita
-  saveAppointment(appointment: Appointment): void {
+  saveAppointment(appointment: Appointment){
     console.log("en el servcio tengo ",appointment)
     this.appointments.push(appointment);
     console.log("en el servcio tengo las appointments",this.appointments)

@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
-import { Appointment } from '../../Interfaces/appointment.model';
+import { Appointment } from '../Interfaces/appointment.model';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-appointments',
   templateUrl: './list-appointment.component.html',
 })
 export class ListAppointmentsComponent implements OnInit{
-  constructor(private service:AppointmentService){}
+  constructor(
+    config: NgbModalConfig,
+    private service:AppointmentService,
+    private modalService: NgbModal
+  ){
+    config.backdrop = 'static';
+		config.keyboard = false;
+  }
 
-  public appointments:Appointment[]=[];
-
+  appointments:Appointment[]=[];
+  
   ngOnInit(): void {
     this.getAll();
   }
@@ -18,6 +26,7 @@ export class ListAppointmentsComponent implements OnInit{
   getAll(){
     this.appointments=this.service.getAll(); 
     this.orderAppointments(this.appointments);
+    console.log(this.appointments)
   }
 
   orderAppointments(arr:any[]){
@@ -42,5 +51,8 @@ export class ListAppointmentsComponent implements OnInit{
       }
     })
   }
+  create(create:TemplateRef<any>) {
+		this.modalService.open(create, { centered:true })	;
+	}
 
 }

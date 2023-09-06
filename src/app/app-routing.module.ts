@@ -1,6 +1,6 @@
 import { NgModule, createComponent } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './components/shared/form/form.component';
+import { FormComponent } from './components/appointment/form/form.component';
 import {  NgbdDatepickerBasic, } from './components/shared/calendar/calendar.component';
 const routes:Routes=[
   {

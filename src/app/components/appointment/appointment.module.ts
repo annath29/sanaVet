@@ -3,6 +3,9 @@ import { ListAppointmentsComponent } from "./list/list-appointment.component";
 import { NgModule} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CreateComponent } from "./create/create.component";
+import { FormComponent } from "./form/form.component";
+import {ReactiveFormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes =[
     {
@@ -22,14 +25,16 @@ const routes: Routes =[
 @NgModule({
     imports:[
         RouterModule.forChild(routes),
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
     ],
     exports:[
         RouterModule
     ],
     declarations:[
         ListAppointmentsComponent,
-        CreateComponent
+        FormComponent,
     ],
 })
 
