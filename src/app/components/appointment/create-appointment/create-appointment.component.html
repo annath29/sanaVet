@@ -1,17 +1,5 @@
-<button (click)="openModal()">Abrir Modal</button>
-
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Título del Modal</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <!-- Contenido del modal -->
-    <p >Este es el contenido del modal.</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')" n>Cerrar</button>
-  </div>
-</ng-template>
+<app-form
+[nameForm]="name"
+(data)="create($event)"
+(close)="cancel()"
+></app-form>

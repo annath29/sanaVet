@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {FormsModule} from '@angular/forms';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { DeleteAppointmentComponent } from './delete-appointment/delete-appointment.component';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 
 const routes: Routes =[
     {
@@ -42,6 +43,7 @@ const routes: Routes =[
         FormComponent,
         CreateAppointmentComponent,
         DeleteAppointmentComponent,
+        EditAppointmentComponent,
     ],
 })
 

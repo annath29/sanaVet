@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './form.component.html',
 })
 export class FormComponent {
-
+  @Input() nameForm!:string;
   @Output() data = new EventEmitter<any>();
   @Output() close = new EventEmitter<{}>();
 
@@ -43,22 +43,27 @@ export class FormComponent {
 
   save()
   {
-    // this.data.emit({
-    //   patient:this.service.findPattientById(this.patientSelect)
-    // })
-
-    console.log(this.appointment)
-
-    this.appointment={
+    this.data.emit({
       id:this.id +1,
       patient:this.service.findPattientById(this.patientSelect),
       date:this.myForm.controls['date'].value,
       hour:this.myForm.controls['hour'].value,
       comments:this.myForm.controls['comments'].value,
-    }
+    })
+
+    console.log("n el form tengo",this.data)
+
+    // console.log(this.appointment)
+
+    // this.appointment={
+    //   id:this.id +1,
+    //   patient:this.service.findPattientById(this.patientSelect),
+    //   date:this.myForm.controls['date'].value,
+    //   hour:this.myForm.controls['hour'].value,
+    //   comments:this.myForm.controls['comments'].value,
+    // }
     //this.appointment=this.myForm.value
-    this.service.saveAppointment(this.appointment)
-    console.log("despues del save",this.appointment)
+    
     //this.myForm.reset();
     this.router.navigateByUrl('/appointments/list');
   }

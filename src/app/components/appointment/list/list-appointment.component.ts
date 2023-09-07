@@ -59,7 +59,7 @@ export class ListAppointmentsComponent implements OnInit{
 	// }
 
   create(){
-    this.router.navigateByUrl('/form')
+    this.router.navigateByUrl('/appointments/create')
   }
 
   // delete(remove:TemplateRef<any>){

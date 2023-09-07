@@ -54,20 +54,27 @@ export class AppointmentService {
   getAll():Appointment[]{
     return this.appointments;
   }
-  // Agregar una nueva cita
+
   saveAppointment(appointment: Appointment){
-    console.log("en el servcio tengo ",appointment)
+    console.log("en el servcio llega",appointment)
     this.appointments.push(appointment);
     console.log("en el servcio tengo las appointments",this.appointments)
   }
 
-  findPattientById(id:number):Patient{
-    
+  findPattientById(id:number):Patient{    
     const patient =this.patients.find(item => item.id ==id);
     if( patient== undefined){
       throw new Error("el id no existe");
     }
-
+  
     return patient;
+  }
+
+  findAppointmentById(id:number):Appointment{
+    const appointment =this.appointments.find(item => item.id ==id);
+    if( appointment== undefined){
+      throw new Error("el id no existe");
+    }  
+    return appointment;
   }
 }
