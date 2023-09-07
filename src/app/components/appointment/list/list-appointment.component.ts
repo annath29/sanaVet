@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
 import { Appointment } from '../Interfaces/appointment.model';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-appointments',
@@ -10,8 +11,9 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 export class ListAppointmentsComponent implements OnInit{
   constructor(
     config: NgbModalConfig,
+    private router:Router,
     private service:AppointmentService,
-    private modalService: NgbModal
+    private modal: NgbModal
   ){
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -51,8 +53,22 @@ export class ListAppointmentsComponent implements OnInit{
       }
     })
   }
-  create(create:TemplateRef<any>) {
-		this.modalService.open(create, { centered:true })	;
-	}
+
+  // create(content:any) {
+	// 	this.modal.open(content, { centered:true })	;
+	// }
+
+  create(){
+    this.router.navigateByUrl('/form')
+  }
+
+  // delete(remove:TemplateRef<any>){
+  //   this.modal.open(remove, {centered:true});
+  // }
+
+  delete()
+  {
+    this.router.navigateByUrl('/appointments/delete');
+  }
 
 }

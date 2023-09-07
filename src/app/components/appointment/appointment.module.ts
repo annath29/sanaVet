@@ -2,10 +2,11 @@ import { RouterModule, Routes } from "@angular/router";
 import { ListAppointmentsComponent } from "./list/list-appointment.component";
 import { NgModule} from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CreateComponent } from "./create/create.component";
 import { FormComponent } from "./form/form.component";
 import {ReactiveFormsModule} from '@angular/forms'
 import {FormsModule} from '@angular/forms';
+import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+import { DeleteAppointmentComponent } from './delete-appointment/delete-appointment.component';
 
 const routes: Routes =[
     {
@@ -14,7 +15,11 @@ const routes: Routes =[
     },
     {
         path:'create',
-        component:CreateComponent,
+        component:CreateAppointmentComponent,
+    },
+    {
+        path:'delete',
+        component:DeleteAppointmentComponent,
     },
     {
         path:'**',
@@ -35,6 +40,8 @@ const routes: Routes =[
     declarations:[
         ListAppointmentsComponent,
         FormComponent,
+        CreateAppointmentComponent,
+        DeleteAppointmentComponent,
     ],
 })
 

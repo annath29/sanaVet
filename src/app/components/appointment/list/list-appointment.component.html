@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <div class="row justify-content-end mx-5">
-        <button type="button" class="btn btn-outline-dark text-center" (click)="create(content)">
+        <!-- <button type="button" class="btn btn-outline-dark text-center" (click)="create(content)"> -->
+        <button type="button" class="btn btn-outline-dark text-center" (click)="create()">
             <h4>Agendar <em class="bi-calendar-plus-fill mx-1 iconSize"></em></h4>
         </button>
     </div>
@@ -26,7 +27,8 @@
                     <td class="col-3 text-center align-middle">{{appointment.comments}}</td>
                     <td class="col-2 text-center align-middle">
                         <em class="mx-1 bi bi-pen-fill"></em>
-                        <em class="mx-1 bi bi-trash-fill"></em>
+                        <!-- <em class="mx-1 bi bi-trash-fill" placements="bottom" (click)="delete(remove)"></em> -->
+                        <em class="mx-1 bi bi-trash-fill" placements="bottom" (click)="delete()"></em>
                     </td>
                 </tr>
             </tbody>
@@ -37,6 +39,9 @@
     </div>
 </div>
 
-<ng-template #content let-modal>
-    <h1>asetgrfhnft  </h1>
-</ng-template>
+<!-- <ng-template #content let-modal>
+    <app-form></app-form>
+</ng-template> -->
+<!-- <ng-template #remove let-modal>
+    <app-delete-appointment></app-delete-appointment>
+</ng-template> -->
